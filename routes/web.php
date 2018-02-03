@@ -14,13 +14,11 @@
 Auth::routes();
 
 // Route::get('/', 'HomeController@welcome')->name('welcome');
-Route::get('/', 'HomeController@homenew2')->name('welcome');
+Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/google2fa952a6c07ee729.html', function(){
     echo 'google-site-verification: google2fa952a6c07ee729.html';
 });
-Route::get('hello', 'HomeController@homenew2');
-Route::get('welcome', 'HomeController@homenew');
-Route::get('/showmore', 'HomeController@showmore')->name('showmore');
+
 Route::get('/home', 'HomeController@welcome')->name('home');
 Route::get('auth/facebook', 'Auth\RegisterController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebookCallback');
@@ -42,7 +40,6 @@ Route::get('/getTown/{id}', 'HomeController@getTown');
 Route::post('follow-company', 'CompanyController@follow');
 Route::post('unfollow-company', 'CompanyController@unfollow');
 
-Route::get('support', 'HomeController@support');
 Route::post('ajaxpro', 'HomeController@ajaxpro');
 
 Route::group(['middleware' => 'auth'], function(){
