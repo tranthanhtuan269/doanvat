@@ -13,13 +13,12 @@
   
 Auth::routes();
 
-// Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/google2fa952a6c07ee729.html', function(){
     echo 'google-site-verification: google2fa952a6c07ee729.html';
 });
 
-Route::get('/home', 'HomeController@welcome')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/facebook', 'Auth\RegisterController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebookCallback');
 Route::get('auth/google', 'Auth\RegisterController@redirectToGoogle');
@@ -32,19 +31,19 @@ Route::get('/job/view/{id}', 'JobController@info');
 Route::get('/getJob/', 'JobController@getJob');
 
 Route::post('/job/join', 'JobController@join');
-Route::get('company/{id}/info', 'CompanyController@info');
-Route::get('company/{id}/listjobs', 'CompanyController@listjobs');
+Route::get('shop/{id}/info', 'ShopController@info');
+Route::get('shop/{id}/listitems', 'ShopController@listitems');
 Route::get('/getDistrict/{id}', 'HomeController@getDistrict');
 Route::get('/getDistrictli/{id}', 'HomeController@getDistrictLi');
 Route::get('/getTown/{id}', 'HomeController@getTown');
-Route::post('follow-company', 'CompanyController@follow');
-Route::post('unfollow-company', 'CompanyController@unfollow');
+Route::post('follow-shop', 'ShopController@follow');
+Route::post('unfollow-shop', 'ShopController@unfollow');
 
 Route::post('ajaxpro', 'HomeController@ajaxpro');
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::post('send-comment', 'CompanyController@sendcomment');
+    Route::post('send-comment', 'ShopController@sendcomment');
 
     // Check role in route middleware
     Route::get('curriculumvitae/create', 'CurriculumVitaeController@createCurriculumVitae');
@@ -58,19 +57,15 @@ Route::group(['middleware' => 'auth'], function(){
 
 // Check role in route middleware
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function () {
-    Route::get('company/create', 'CompanyController@createCompany');
-    Route::post('company/store', 'CompanyController@storeCompany');
-    Route::get('company/editCompany', 'CompanyController@editCompany');
-    Route::post('company/update', 'CompanyController@updateCompany');
-    Route::get('company/create_v2', 'CompanyController@createCompany_v2');
-    Route::post('company/store_v2', 'CompanyController@storeCompany_v2');
+    Route::get('shop/create', 'ShopController@createShop');
+    Route::post('shop/store', 'ShopController@storeShop');
+    Route::get('shop/editShop', 'ShopController@editShop');
+    Route::post('shop/update', 'ShopController@updateShop');
+    Route::get('shop/create_v2', 'ShopController@createShop_v2');
+    Route::post('shop/store_v2', 'ShopController@storeShop_v2');
     Route::get('job/create', 'JobController@createJob');
     Route::post('job/store', 'JobController@storeJob');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
-    Route::get('company/{id}/view01', 'CompanyController@view01');
-    Route::get('company/{id}/view02', 'CompanyController@view02');
-    Route::get('company/{id}/view03', 'CompanyController@view03');
-    Route::post('company/changeTemplate', 'CompanyController@changeTemplate');
 });
 
 // Check role in route middleware
@@ -87,14 +82,12 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
     Route::resource('admin/district', 'DistrictController');
     Route::resource('admin/town', 'TownController');
     Route::resource('admin/curriculum-vitae', 'CurriculumVitaeController');
-    Route::resource('admin/companytype', 'CompanyTypeController');
     Route::resource('admin/job-type', 'JobTypeController');
-    Route::resource('Admin/company-size', 'CompanySizeController');
     Route::resource('admin/job', 'JobController');
     Route::resource('admin/salary', 'SalaryController');
     Route::resource('master/category', 'CategoryController');
     Route::get('admin/apply', 'ApplyController@admin');
-    Route::resource('admin/company', 'CompanyController');
+    Route::resource('admin/shop', 'ShopController');
     Route::resource('master/partner', 'PartnerController');
 });
 
@@ -114,14 +107,13 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'master'], function 
     Route::post('job/vip2', 'JobController@vip2');
     Route::post('job/unvip', 'JobController@unvip');
 
-    Route::post('company/active', 'CompanyController@active');
-    Route::post('company/unactive', 'CompanyController@unactive');
-    Route::resource('admin/company', 'CompanyController');
+    Route::post('shop/active', 'ShopController@active');
+    Route::post('shop/unactive', 'ShopController@unactive');
+    Route::resource('admin/shop', 'ShopController');
 
     Route::post('apply/active', 'ApplyController@active');
     Route::post('apply/unactive', 'ApplyController@unactive');
     Route::get('admin/apply', 'ApplyController@admin');
-    Route::resource('admin/companytype', 'CompanyTypeController');
 
     Route::post('post/active', 'PostController@active');
     Route::post('post/unactive', 'PostController@unactive');

@@ -74,7 +74,7 @@ class HomeController extends Controller
             $filename = $file_img->getClientOriginalName();
             $extension = $file_img->getClientOriginalExtension();
             $img_file = date('His') . $filename;
-            $destinationPath = base_path('../../images');
+            $destinationPath = base_path('public/images');
             $file_img->move($destinationPath, $img_file);
             return \Response::json(array('code' => '200', 'message' => 'success', 'image_url' => $img_file));
         }
@@ -91,7 +91,7 @@ class HomeController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $picture = date('His') . $filename;
                 $allPic .= $picture . ';';
-                $destinationPath = base_path('../../images');
+                $destinationPath = base_path('public/images');
                 $file->move($destinationPath, $picture);
             }
             return \Response::json(array('code' => '200', 'message' => 'success', 'images_url' => $allPic));
@@ -106,7 +106,7 @@ class HomeController extends Controller
             list(, $data)      = explode(',', $data);
             $data = base64_decode($data);
             $imageName = time().'.png';
-            $destinationPath = base_path('../../images');
+            $destinationPath = base_path('public/images');
             file_put_contents($destinationPath.'/'.$imageName, $data);
             return \Response::json(array('code' => '200', 'message' => 'success', 'image_url' => $imageName));
         }

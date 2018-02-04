@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>doanvat.vn</title>
-    <script src="{{ url('/') }}/public/js/jquery-3.3.1.min.js"></script>
-    <script src="{{ url('/') }}/public/js/masonry.pkgd.min.js"></script>
-    <script src="{{ url('/') }}/public/js/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ url('/') }}/public/theme/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ url('/') }}/public/theme/js/masonry.pkgd.min.js"></script>
+    <script src="{{ url('/') }}/public/theme/js/imagesloaded.pkgd.min.js"></script>
     <!-- Bootstrap core CSS -->
-    <link href="{{ url('/') }}/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/public/theme/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         * { box-sizing: border-box; }
 
@@ -107,17 +107,17 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-        <a class="navbar-brand" href="#"><img src="{{ url('/') }}/public/images/icons/if_hamburger_93073.png" width="25" height="25" alt="">DoAnVat.vn</a>
+        <a class="navbar-brand" href="#"><img src="{{ url('/') }}/public/theme/images/icons/if_hamburger_93073.png" width="25" height="25" alt="">DoAnVat.vn</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><img src="{{ url('/') }}/public/images/icons/if_09_61473.png" class="icon-menu" alt="">Đi chợ <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#"><img src="{{ url('/') }}/public/theme/images/icons/if_09_61473.png" class="icon-menu" alt="">Đi chợ <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="{{ url('/') }}/public/images/icons/if_6_67719.png" class="icon-menu" alt="">Giỏ hàng</a>
+                    <a class="nav-link" href="#"><img src="{{ url('/') }}/public/theme/images/icons/if_6_67719.png" class="icon-menu" alt="">Giỏ hàng</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
@@ -136,133 +136,133 @@
       <div class="grid-sizer"></div>
       <div class="grid-item" data-id="1">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/banh_bot_loc.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/banh_bot_loc.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="2">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/banh_gio01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/banh_gio01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="3">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/banh_goi01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/banh_goi01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="4">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/canh_ga_nuong01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/canh_ga_nuong01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="5">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/banh_xeo01.jpeg" />
+        <img src="{{ url('/') }}/public/theme/images/banh_xeo01.jpeg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="6">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/cha_ca_vien01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/cha_ca_vien01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="7">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/cha_ca_vien01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/cha_ca_vien01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="8">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/chao_suon01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/chao_suon01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="9">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/com_ga01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/com_ga01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="10">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/cut_lon_xao_me01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/cut_lon_xao_me01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="11">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/ga_bo_xoi01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/ga_bo_xoi01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="12">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/kimpap01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/kimpap01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="13">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/nem_chua_ran01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/nem_chua_ran01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="14">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/nem_chua_ran02.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/nem_chua_ran02.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="15">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/ngo_sao01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/ngo_sao01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="16">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/nom_chan_ga_rut_xuong01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/nom_chan_ga_rut_xuong01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="17">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/nom_chan_ga_rut_xuong02.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/nom_chan_ga_rut_xuong02.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="18">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/xoi_ga01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/xoi_ga01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
       </div>
       <div class="grid-item" data-id="19">
         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" /> -->
-        <img src="{{ url('/') }}/public/images/xoi_mit01.jpg" />
+        <img src="{{ url('/') }}/public/theme/images/xoi_mit01.jpg" />
         <div class="detail-item">
             <div class="price">35 <span class="sub-price">k</span></div>
         </div>
@@ -281,7 +281,7 @@
 
         function addItem(){
             $html1  = '<div class="grid-item grid-item'+ countLoader + '" data-id="'+ (countLoader + 19) + '">';
-            $html1 += '<img src="'+ url +'/public/images/nom_chan_ga_rut_xuong02.jpg" />';
+            $html1 += '<img src="'+ url +'/public/theme/images/nom_chan_ga_rut_xuong02.jpg" />';
             $html1 += '<div class="detail-item">';
             $html1 += '<div class="price">35 <span class="sub-price">k</span></div>';
             $html1 += '</div>';
@@ -373,7 +373,7 @@
 
 
     </script>
-    <script src="{{ url('/') }}/public/js/popper.min.js"></script>
-    <script src="{{ url('/') }}/public/js/bootstrap.min.js"></script>
+    <script src="{{ url('/') }}/public/theme/js/popper.min.js"></script>
+    <script src="{{ url('/') }}/public/theme/js/bootstrap.min.js"></script>
 </body>
 </html>

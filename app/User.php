@@ -28,20 +28,20 @@ class User extends Authenticatable
     ];
 
     public function getUserInfo(){
-        $company_id = -1;
+        $shop_id = -1;
         $cv_id = -1;
         $returnData = [];
         if (\Auth::check()) {
             $current_id = \Auth::user()->id;
-            //get company 
-            $company = \DB::table('companies')
-                    ->where('companies.user', $current_id)
+            //get shop 
+            $shop = \DB::table('shops')
+                    ->where('shops.user', $current_id)
                     ->select(
                         'id'
                     )
                     ->first();
-            if($company){
-                $company_id = $company->id;
+            if($shop){
+                $shop_id = $shop->id;
             }
             
             //get CV 
@@ -56,7 +56,7 @@ class User extends Authenticatable
             }
 
             $returnData['user_id'] = $current_id;
-            $returnData['company_id'] = $company_id;
+            $returnData['shop_id'] = $shop_id;
             $returnData['cv_id'] = $cv_id;
             return $returnData;
         }
