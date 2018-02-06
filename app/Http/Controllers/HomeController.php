@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CompanyCompanyType;
 use App\User;
-use App\Company;
-use App\Job;
+use App\Shop;
+use App\Item;
 
 class HomeController extends Controller
 {
@@ -27,7 +27,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $listItem = \DB::table('items')
+                    ->join('shops', 'shops.id', '=', 'items.shop')
+                    ->where('items.active', '=', 1)
+                    ->select(
+                        'items.id as id', 
+                        'items.name as itemname',
+                        'items.views as views', 
+                        'items.likes as likes', 
+                        'items.image as image', 
+                        'items.price as price',
+                        'items.shop as shop',
+                        'shops.name as shopname',
+                        'shops.lat as lat',
+                        'shops.lng as lng'
+                    )
+                    ->orderBy('items.created_at', 'desc')
+                    ->take(12)
+                    ->get();
+        return view('welcome', array('listItem' => $listItem));
     }
 
     public function getDistrict($id){

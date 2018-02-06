@@ -44,8 +44,6 @@
                             <div class="row">
                                 <div class="link-left">
                                     <a target="_self" href="{{ url('/') }}"><i></i>Trang chủ</a>
-                                    <a target="_self" href="{{ url('/') }}/showmore?job=new"><i></i>Việc làm</a>
-                                    <a target="_self" href="{{ url('/') }}/showmore?shop=new"><i></i>Nhà tuyển dụng</a>
                                 </div>
                                 <div class="login">
                                     @if (Auth::guest())
@@ -150,16 +148,10 @@
                                                 <li><a target="_self" href="{{ url('/post/create') }}">Create Post</a></li>
                                                 @elseif(Auth::check() && Auth::user()->hasRole('poster'))
                                                     @if($shop_id > 0)
-                                                    <li><a target="_self" href="{{ url('/') }}/shop/{{ $shop_id }}/info">Trang tuyển dụng</a></li>
-                                                    <li><a target="_self" href="{{ url('/') }}/job/create">Đăng tin tuyển dụng</a></li>
+                                                    <li><a target="_self" href="{{ url('/') }}/shop/{{ $shop_id }}/info">Trang Cửa Hàng</a></li>
+                                                    <li><a target="_self" href="{{ url('/') }}/item/create">Tạo Món Mới</a></li>
                                                     @else
-                                                    <li><a target="_self" href="{{ url('/') }}/shop/create">Tạo trang tuyển dụng</a></li>
-                                                    @endif
-                                                @elseif(Auth::check() && Auth::user()->hasRole('user'))
-                                                    @if($cv_id > 0)
-                                                    <li><a target="_self" href="{{ url('/') }}/curriculumvitae/view/{{ $cv_id }}">Trang hồ sơ</a></li>
-                                                    @else
-                                                    <li><a target="_self" href="{{ url('/') }}/curriculumvitae/create">Tạo hồ sơ</a></li>
+                                                    <li><a target="_self" href="{{ url('/') }}/shop/create">Tạo Cửa Hàng</a></li>
                                                     @endif
                                                 @else 
 

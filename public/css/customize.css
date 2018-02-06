@@ -353,3 +353,9 @@ img.no-vote{
 .comment-time{
     font-size: 10px;
 }
+
+.item-holder{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}

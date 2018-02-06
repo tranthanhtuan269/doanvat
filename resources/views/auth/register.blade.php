@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top:10px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -78,7 +78,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Bạn là</label>
 
                             <div class="col-md-6">
-                                <?php echo Form::select('type', array('0' => 'Người Tìm Việc', '1' => 'Nhà Tuyển Dụng'), 0, array('class' => 'form-control')); ?>
+                                <?php echo Form::select('type', array('0' => 'Thực khách', '1' => 'Chủ cửa hàng'), 0, array('class' => 'form-control')); ?>
                             </div>
                         </div>
 

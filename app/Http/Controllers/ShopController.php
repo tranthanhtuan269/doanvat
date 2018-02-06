@@ -9,6 +9,7 @@ use App\Follow;
 use App\Branch;
 use App\Item;
 use App\Comment;
+use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Session;
@@ -302,7 +303,9 @@ class ShopController extends Controller {
     public function info($id) {
         $shop_id = -1;
         $cv_id = -1;
+        $current_id = -1;
         if (\Auth::check()) {
+            $current_id = \Auth::user()->id;
             $user_info = \Auth::user()->getUserInfo();
             $shop_id = $user_info['shop_id'];
             $cv_id = $user_info['cv_id'];
@@ -338,8 +341,6 @@ class ShopController extends Controller {
                         'shops.sologan', 
                         'shops.description',
                         'shops.images',
-                        'shops.template',
-                        'shops.site_url',
                         'users.phone as hotline'
                 )
                 ->where('shops.id', $id)
@@ -348,20 +349,10 @@ class ShopController extends Controller {
         if ($shop) {
             // load comment of Shop
             $comments = Comment::where('shop', $id)->get();
-            $comments = \DB::table('comments')
-                            ->join('users', 'users.id', '=', 'comments.created_by')
-                            ->select(
-                                'comments.id as id',
-                                'comments.comment as comment',
-                                'users.name as username',
-                                'comments.created_at as created_at'
-                            )
-                            ->orderBy('comments.created_at', 'desc')
-                            ->take(12)
-                            ->get();
 
             $items = \DB::table('items')
                     ->where('items.shop', '=', $shop->id)
+                    ->where('items.active', '=', 1)
                     ->select(
                         'items.id as id', 
                         'items.name as name',
@@ -374,8 +365,29 @@ class ShopController extends Controller {
                     ->take(12)
                     ->get();
 
-            
-            return view('shop.info', array('shop' => $shop, 'shop_id' => $shop_id, 'cv_id' => $cv_id, 'followed' => $followed, 'comments' => $comments, 'items' => $items));
+            $stringArray = [];
+            foreach ($items as $item) {
+                $stringArray[]= $item->id;
+            }
+
+            if($current_id != -1){
+                $likes = \DB::table('likes')
+                    ->where('likes.user', '=', $current_id)
+                    ->whereIn('likes.item', $stringArray)
+                    ->select(
+                        'likes.item as item'
+                    )
+                    ->get();
+
+                $likedArray = [];
+                foreach ($likes as $like) {
+                    $likedArray[]= $like->item;
+                }
+            }else{
+                $likedArray = [];
+            }
+
+            return view('shop.info', array('shop' => $shop, 'shop_id' => $shop_id, 'cv_id' => $cv_id, 'followed' => $followed, 'comments' => $comments, 'items' => $items, 'likedArray' => $likedArray));
         }
         return view('errors.404');
     }
@@ -452,6 +464,41 @@ class ShopController extends Controller {
         }
     }
 
+    public function sendlike(Request $request) {
+        if(\Auth::check()){
+            $input = $request->all();
+            $current_id = \Auth::user()->id;
+
+            // check exist comment of user
+            $liked = Like::where('user', $current_id)->where('item', $input['item'])->first();
+
+            if ($liked && $input['like'] == 0){
+                $item = Item::where('id', $input['item'])->first();
+                $item->likes -= 1;
+                // remove like
+                if ($liked->delete() && $item->save()) {
+                    return \Response::json(array('code' => '200', 'message' => 'success'));
+                } else {
+                    return \Response::json(array('code' => '404', 'message' => 'unsuccess'));
+                }
+            }else{
+                // add like
+                $like = new Like;
+                $like->user = $current_id;
+                $like->item = $input['item'];
+
+                $item = Item::where('id', $input['item'])->first();
+                $item->likes += 1;
+                if ($like->save() && $item->save()) {
+                    return \Response::json(array('code' => '200', 'message' => 'success'));
+                }
+            }
+            return \Response::json(array('code' => '404', 'message' => 'unsuccess'));
+        }else{
+            return \Response::json(array('code' => '404', 'message' => 'unauthen'));
+        }
+    }
+
     public function follow(Request $request) {
         if (\Auth::check()) {
             $input = $request->all();
@@ -491,21 +538,6 @@ class ShopController extends Controller {
             }
         }else{
             return \Response::json(array('code' => '401', 'message' => 'unauthen!'));
-        }
-    }
-
-    public function changeTemplate(Request $request) {
-        $input = $request->all();
-        $current_id = \Auth::user()->id;
-
-        $shop = Shop::where('user', $current_id)->first();
-        if ($shop && isset($input['template'])) {
-            $shop->template = (int)$input['template'];
-            if ($shop->save()) {
-                return \Response::json(array('code' => '200', 'message' => 'success'));
-            } else {
-                return \Response::json(array('code' => '404', 'message' => 'unsuccess'));
-            }
         }
     }
 

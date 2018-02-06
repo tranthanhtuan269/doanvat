@@ -38,7 +38,7 @@
                 $images = explode(";",$company->images);
                 for($i = 0; $i < count($images); $i++){ if($i == 3) break; ?>
                     <div class="col-md-4 col-xs-12">
-                        <img src="http://test.gmon.com.vn/?image={{ $images[$i] }}" class="img-responsive img-thumbnail" alt="http://test.gmon.com.vn/?image={{ $images[$i] }}">
+                        <img src="{{ url('/') }}/public/images/{{ $images[$i] }}" class="img-responsive img-thumbnail" alt="{{ url('/') }}/public/images/{{ $images[$i] }}">
                     </div>
             <?php } ?>
             @endif
@@ -51,7 +51,7 @@
                 <div class="logo-company">
                     @if(isset($company->logo) && strlen($company->logo) > 0)
                     <a class="col-md-12 col-xs-12" target="_self" href="{{ url('/') }}/company/{{ $company->id }}/info">
-                        <img src="http://test.gmon.com.vn/?image={{ $company->logo }}" class="img-responsive" alt="http://test.gmon.com.vn/?image={{ $company->logo }}" style="width: 100%;height: 100%;margin-left: -20px;">
+                        <img src="{{ url('/') }}/public/images/{{ $company->logo }}" class="img-responsive" alt="{{ url('/') }}/public/images/{{ $company->logo }}" style="width: 100%;height: 100%;margin-left: -20px;">
                     </a>
                     @endif
                 </div>
@@ -60,11 +60,11 @@
                         <h1 class="obj-name">{{ $company->name }}</h1>
                     </div>
                     <div class="col-md-12 col-xs-12 star-hold">
-                        <img class="star-vote" src="http://test.gmon.com.vn/?image=star.png" alt="http://test.gmon.com.vn/?image=star.png">
-                        <img class="star-vote" src="http://test.gmon.com.vn/?image=star.png" alt="http://test.gmon.com.vn/?image=star.png">
-                        <img class="star-vote" src="http://test.gmon.com.vn/?image=star.png" alt="http://test.gmon.com.vn/?image=star.png">
-                        <img class="star-vote" src="http://test.gmon.com.vn/?image=star.png" alt="http://test.gmon.com.vn/?image=star.png">
-                        <img class="star-vote" src="http://test.gmon.com.vn/?image=star.png" alt="http://test.gmon.com.vn/?image=star.png">
+                        <img class="star-vote" src="{{ url('/') }}/public/images/star.png" alt="{{ url('/') }}/public/images/star.png">
+                        <img class="star-vote" src="{{ url('/') }}/public/images/star.png" alt="{{ url('/') }}/public/images/star.png">
+                        <img class="star-vote" src="{{ url('/') }}/public/images/star.png" alt="{{ url('/') }}/public/images/star.png">
+                        <img class="star-vote" src="{{ url('/') }}/public/images/star.png" alt="{{ url('/') }}/public/images/star.png">
+                        <img class="star-vote" src="{{ url('/') }}/public/images/star.png" alt="{{ url('/') }}/public/images/star.png">
                     </div>
                     <div class="col-md-12 col-xs-12 info-row hidden-xs">
                         <i class="fa fa-street-view"></i>{{ $company->address }}
@@ -102,11 +102,6 @@
                     @if(strlen($company->sologan) > 0)
                     <div class="col-md-12 col-xs-12 info-row">
                         <i class="fa fa-trophy"></i>{{ $company->sologan }}
-                    </div>
-                    @endif
-                    @if(strlen($company->site_url)>0)
-                    <div class="col-md-12 col-xs-12 info-row web-link">
-                        <i class="fa fa-link" style="float: left;"></i><a style="word-break: break-all;" href="{{ $company->site_url }}">{{ $company->site_url }}</a>
                     </div>
                     @endif
                     <div class="clearfix"></div>
@@ -243,15 +238,15 @@
         <div class="related-work row">
             <p class="title"><i></i>Thêm cơ hội làm việc cho bạn</p>
             <div class="wrapper" id="wrapper">
-                <div class="prev" id="btPrev"><img src="http://test.gmon.com.vn/?image=prev.png" alt=""></div>
-                <div class="next"  id="btNext"><img src="http://test.gmon.com.vn/?image=next.png" alt=""></div>
+                <div class="prev" id="btPrev"><img src="{{ url('/') }}/public/images/prev.png" alt=""></div>
+                <div class="next"  id="btNext"><img src="{{ url('/') }}/public/images/next.png" alt=""></div>
                 <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                     <div id="contents">
                         @foreach($job_relatives as $related)
                         <div class="item-work" >
                             <div class="border-item">
                                 <a target="_self" href="{{ url('/') }}/job/{{ $related->id }}/{{ $related->slug }}">
-                                    <p class="work-img"><img src="http://test.gmon.com.vn/?image={{ $related->logo }}" alt=""></p>
+                                    <p class="work-img"><img src="{{ url('/') }}/public/images/{{ $related->logo }}" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>{{ $related->name }} tại {{ $related->companyname }}</p></div>
                                         <div class="work-view">

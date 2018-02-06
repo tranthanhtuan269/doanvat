@@ -25,7 +25,7 @@ class Shop extends Model
      *
      * @var array
      */
-    protected $fillable = ['user', 'banner', 'logo', 'name', 'sologan', 'city', 'district', 'town', 'address', 'description', 'images', 'branchs', 'lat', 'lng', 'youtube_link', 'template', 'site_url', 'show_master'];
+    protected $fillable = ['user', 'banner', 'logo', 'name', 'sologan', 'city', 'district', 'town', 'address', 'description', 'images', 'lat', 'lng', 'youtube_link', 'show_master'];
 
     public function getPhoneNumber($user_id){
         $user = User::findOrFail($user_id);

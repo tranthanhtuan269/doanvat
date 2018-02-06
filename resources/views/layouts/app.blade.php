@@ -1,90 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <base href="{{ url('/') }}" target="_self">
-    <title>{{ config('app.name', 'Gmon') }}</title>
-    <!-- bootstrap -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-    @yield('css')
-    <link href="{{ url('/') }}/public/css/customize.css" rel="stylesheet">
-    <link rel="shortcut icon" href="http://test.gmon.com.vn/?image=favicon.png" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+
+    <title>doanvat.vn</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+    <script src="{{ url('/') }}/public/theme/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ url('/') }}/public/theme/js/masonry.pkgd.min.js"></script>
+    <script src="{{ url('/') }}/public/theme/js/imagesloaded.pkgd.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/css/styleMainpage.css"/>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a target="_self" class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+    <nav id="navbar">
+        <div class="menu">
+            <ul class="desktop">
+                <li class="brand-item"><a href="{{ url('/') }}">DoAnVat.vn</a></li>
+                <li><a href="#">Quán ăn nổi tiếng</a>
+                    <ul class="submenu">
+                        <li><a href="#">Bữa sáng</a></li>
+                        <li><a href="#">Bữa trưa</a></li>
+                        <li><a href="#">Bữa chiều</a></li>
+                        <li><a href="#">Bữa tối</a></li>
+                        <li><a href="#">Bữa đêm</a></li>
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a target="_self" href="{{ url('/login') }}">Đăng Nhập</a></li>
-                            <li><a target="_self" href="{{ url('/register') }}">Đăng Ký</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a target="_self" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    @if(Auth::check() && Auth::user()->hasRole('admin'))
-                                        <li><a target="_self" href="{{ url('/admin') }}">Administrator</a></li>
-                                    @elseif(Auth::check() && Auth::user()->hasRole('master'))
-                                        <li><a target="_self" href="{{ url('/city/admin') }}">Administrator</a></li>
-                                    @else
-                                    @endif
-                                    <li>
-                                        <a target="_self" href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Đăng Xuất
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
+                </li>
+                <li><a href="#">Quán ăn gần bạn</a>
+                    <ul class="submenu">
+                        <li><a href="#">Bữa sáng</a></li>
+                        <li><a href="#">Bữa trưa</a></li>
+                        <li><a href="#">Bữa chiều</a></li>
+                        <li><a href="#">Bữa tối</a></li>
+                        <li><a href="#">Bữa đêm</a></li>
                     </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
+                </li>
+                <li><a href="{{ url('/') }}/cart">Giỏ hàng<span class="number-in-cart">(1)</span></a></li>
+                <li><a href="{{ url('/') }}/login">Đăng nhập</a></li>
+                <li><a href="{{ url('/') }}/register">Đăng ký</a></li>
+            </ul>
+            <ul class="mobile">
+                <li class="brand-item"><a href="{{ url('/') }}">DoAnVat.vn</a></li>
+                <li><a href="#">Quán ăn nổi tiếng</a>
+                    <ul class="submenu">
+                        <li><a href="#">Bữa sáng</a></li>
+                        <li><a href="#">Bữa trưa</a></li>
+                        <li><a href="#">Bữa chiều</a></li>
+                        <li><a href="#">Bữa tối</a></li>
+                        <li><a href="#">Bữa đêm</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Quán ăn gần bạn</a>
+                    <ul class="submenu">
+                        <li><a href="#">Bữa sáng</a></li>
+                        <li><a href="#">Bữa trưa</a></li>
+                        <li><a href="#">Bữa chiều</a></li>
+                        <li><a href="#">Bữa tối</a></li>
+                        <li><a href="#">Bữa đêm</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url('/') }}/cart">Giỏ hàng<span class="number-in-cart"> ( 1 ) </span></a></li>
+                <li><a href="{{ url('/') }}/login">Đăng nhập</a></li>
+                <li><a href="{{ url('/') }}/register">Đăng ký</a></li>
+            </ul>
+        </div>
+        <div id="openMenu">MENU</div>
+    </nav>
+    <div class="overlay"></div>
+    <div class="alert" id="checkLocalStore" style="display: none;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        Phiên bản trình duyệt của bạn không hỗ trợ mua hàng trên <b>DoAnVat.vn</b>. <br /> Xin hãy cập nhật phiên bản mới để trải nghiệm dịch vụ của chúng tôi!
     </div>
-    <script src="{{ url('/') }}/public/js/master.js"></script>
+
+    @yield('content')
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>

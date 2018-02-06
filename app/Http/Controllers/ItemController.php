@@ -144,6 +144,32 @@ class ItemController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function disableItem(Request $request)
+    {
+        if (\Auth::check()) {
+            $user_info = \Auth::user()->getUserInfo();
+            $shop_id = $user_info['shop_id'];
+            if($shop_id > 0){
+                $input = $request->all();
+                $item = Item::findOrFail($input['item']);
+                $item->active = 0;
+                if ($item->update($input)) {
+                    return \Response::json(array('code' => '200', 'message' => 'success'));
+                }
+            }
+        }
+
+        return redirect()->back();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -189,9 +215,6 @@ class ItemController extends Controller
 
     public function storeItem(Request $request) {
         $input = $request->all();
-        if ($input['description'] == null) {
-            $input['description'] = '';
-        }
         $current_id = \Auth::user()->id;
         $input['created_by'] = $current_id;
         $input['created_at'] = date("Y-m-d H:i:s");
@@ -210,7 +233,7 @@ class ItemController extends Controller
 
         if ($item) {            
             return redirect()->action(
-                    'ItemController@info', ['id' => $item->id]
+                    'ShopController@info', ['id' => $shop->id]
                 );
         }
 

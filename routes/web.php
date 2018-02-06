@@ -40,10 +40,11 @@ Route::post('follow-shop', 'ShopController@follow');
 Route::post('unfollow-shop', 'ShopController@unfollow');
 
 Route::post('ajaxpro', 'HomeController@ajaxpro');
+Route::post('send-like', 'ShopController@sendlike');
+Route::post('send-comment', 'ShopController@sendcomment');
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::post('send-comment', 'ShopController@sendcomment');
 
     // Check role in route middleware
     Route::get('curriculumvitae/create', 'CurriculumVitaeController@createCurriculumVitae');
@@ -63,8 +64,9 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function 
     Route::post('shop/update', 'ShopController@updateShop');
     Route::get('shop/create_v2', 'ShopController@createShop_v2');
     Route::post('shop/store_v2', 'ShopController@storeShop_v2');
-    Route::get('job/create', 'JobController@createJob');
-    Route::post('job/store', 'JobController@storeJob');
+    Route::get('item/create', 'ItemController@createItem');
+    Route::post('item/store', 'ItemController@storeItem');
+    Route::post('item/disable', 'ItemController@disableItem');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
 });
 
